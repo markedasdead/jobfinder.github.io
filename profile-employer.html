@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFinder — Поиск работы и сотрудников</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <a href="#" class="title">Job<span>Finder</span></a>
+            </div>
+
+            <button class="header__burger_menu" id="burger-toggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="header__menu" id="nav-menu">
+                <ul class="header__menu-list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">Резюме</a></li>
+                    <li><a href="#">Для соискателей</a></li>
+                    <li><a href="#">Для работодателей</a></li>
+                </ul>
+                
+                <div class="header__actions">
+                    <button id="theme-toggle" class="header__theme-changer" title="Сменить тему">🌓</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <main class="profile-page">
+            <div class="container profile-container">
+                <aside class="profile-sidebar">
+                    <div class="profile-card user-info">
+                        <div class="profile-avatar company-logo">
+                            <span>🏢</span> 
+                        </div>
+                        <h2>TechCorp</h2>
+                        <p class="user-role">IT и разработка</p>
+                        <div class="user-status">
+                            <span class="status-badge active">Проверенная компания</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-card user-contacts">
+                        <h3>Информация</h3>
+                        <ul class="contact-list">
+                            <li><span>🌐</span> techcorp.ru</li>
+                            <li><span>👥</span> 50-100 сотрудников</li>
+                            <li><span>📍</span> Москва</li>
+                        </ul>
+                        <button class="btn-edit-profile">Настройки компании</button>
+                    </div>
+                </aside>
+
+                <section class="profile-content">
+                    <div class="content-header">
+                        <h2>Ваши вакансии</h3>
+                        <button class="btn-add-vacancy">Разместить вакансию</button>
+                    </div>
+
+                    <div class="vacancies-list">
+                        <div class="profile-card vacancy-item">
+                            <div class="vacancy-info">
+                                <strong>Senior Frontend Developer</strong>
+                                <p>Откликов: 14 • Просмотров: 120</p>
+                            </div>
+                            <div class="vacancy-actions">
+                                <span class="status-badge active">Активна</span>
+                                <button class="btn-more">•••</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card vacancy-item">
+                            <div class="vacancy-info">
+                                <strong>Product Designer</strong>
+                                <p>Откликов: 8 • Просмотров: 95</p>
+                            </div>
+                            <div class="vacancy-actions">
+                                <span class="status-badge active">Активна</span>
+                                <button class="btn-more">•••</button>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-card vacancy-item archived">
+                            <div class="vacancy-info">
+                                <strong>Junior QA Engineer</strong>
+                                <p>Вакансия закрыта 2 недели назад</p>
+                            </div>
+                            <div class="vacancy-actions">
+                                <span class="status-badge">В архиве</span>
+                                <button class="btn-more">•••</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

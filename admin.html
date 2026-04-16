@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFinder — Поиск работы и сотрудников</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <div class="admin-page">
+            <aside class="admin-sidebar">
+                <div class="admin-logo">
+                    <h2>JobFinder <span>Admin</span></h2>
+                </div>
+                <nav class="admin-nav">
+                    <a href="#" class="nav-item active">📊 Дашборд</a>
+                    <a href="#" class="nav-item">👥 Пользователи</a>
+                    <a href="#" class="nav-item">💼 Вакансии</a>
+                    <a href="#" class="nav-item">📄 Резюме</a>
+                    <a href="#" class="nav-item">⚙️ Настройки</a>
+                </nav>
+            </aside>
+
+            <main class="admin-main">
+                <header class="admin-header">
+                    <h1>Обзор системы</h1>
+                    <div class="admin-user-info">
+                        <span>Администратор</span>
+                        <div class="admin-avatar">A</div>
+                    </div>
+                </header>
+
+                <div class="admin-stats-grid">
+                    <div class="profile-card stat-card">
+                        <span class="stat-title">Всего пользователей</span>
+                        <span class="stat-value">1,240</span>
+                        <span class="stat-trend plus">+12%</span>
+                    </div>
+                    <div class="profile-card stat-card">
+                        <span class="stat-title">Активных вакансий</span>
+                        <span class="stat-value">458</span>
+                        <span class="stat-trend plus">+5%</span>
+                    </div>
+                    <div class="profile-card stat-card">
+                        <span class="stat-title">Новых откликов</span>
+                        <span class="stat-value">89</span>
+                        <span class="stat-trend minus">-2%</span>
+                    </div>
+                </div>
+
+                <div class="profile-card admin-table-card">
+                    <h3>Последние регистрации</h3>
+                    <div class="table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Пользователь</th>
+                                    <th>Тип</th>
+                                    <th>Дата</th>
+                                    <th>Статус</th>
+                                    <th>Действие</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ivan@mail.com</td>
+                                    <td>Соискатель</td>
+                                    <td>16.04.2026</td>
+                                    <td><span class="status-badge active">Активен</span></td>
+                                    <td><button class="btn-table">Управлять</button></td>
+                                </tr>
+                                <tr>
+                                    <td>hr@techcorp.ru</td>
+                                    <td>Работодатель</td>
+                                    <td>15.04.2026</td>
+                                    <td><span class="status-badge active">Активен</span></td>
+                                    <td><button class="btn-table">Управлять</button></td>
+                                </tr>
+                                <tr>
+                                    <td>spammer@test.ru</td>
+                                    <td>Соискатель</td>
+                                    <td>14.04.2026</td>
+                                    <td><span class="status-badge archived">Заблокирован</span></td>
+                                    <td><button class="btn-table">Управлять</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

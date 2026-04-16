@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFinder — Поиск работы и сотрудников</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vacancies.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <a href="#" class="title">Job<span>Finder</span></a>
+            </div>
+
+            <button class="header__burger_menu" id="burger-toggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="header__menu" id="nav-menu">
+                <ul class="header__menu-list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">Резюме</a></li>
+                    <li><a href="#">Для соискателей</a></li>
+                    <li><a href="#">Для работодателей</a></li>
+                </ul>
+                
+                <div class="header__actions">
+                    <button id="theme-toggle" class="header__theme-changer" title="Сменить тему">🌓</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <main class="vacancies-page">
+            <div class="container vacancies-container">
+                <aside class="filters-sidebar">
+                    <div class="profile-card filter-card">
+                        <h3>Фильтры</h3>
+                        
+                        <div class="filter-group">
+                            <label>Категория</label>
+                            <select class="form-select">
+                                <option value="all">Все категории</option>
+                                <option value="it">Разработка</option>
+                                <option value="design">Дизайн</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Тип занятости</label>
+                            <div class="filter-checkboxes">
+                                <label class="check-container">Полная занятость
+                                    <input type="checkbox" checked>
+                                </label>
+                                <label class="check-container">Удаленно
+                                    <input type="checkbox">
+                                </label>
+                                <label class="check-container">Проектная работа
+                                    <input type="checkbox">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Зарплата (от)</label>
+                            <input type="" class="form-input" placeholder="Например: 100 000">
+                        </div>
+
+                        <button class="btn-submit">Применить</button>
+                    </div>
+                </aside>
+
+                <section class="vacancies-content">
+                    <div class="search-bar-wrapper">
+                        <input type="text" class="search-input" placeholder="Должность, ключевые слова или компания">
+                        <button class="search-btn">Найти</button>
+                    </div>
+
+                    <div class="vacancies-list">
+                        <div class="profile-card vacancy-card">
+                            <div class="vacancy-card-header">
+                                <div class="company-logo-small">🏢</div>
+                                <div class="vacancy-title-info">
+                                    <h3>Senior Frontend Developer</h3>
+                                    <p>TechCorp • Москва • 2 дня назад</p>
+                                </div>
+                                <div class="vacancy-salary">250 000 — 350 000 ₽</div>
+                            </div>
+                            <div class="vacancy-description">
+                                Мы ищем опытного разработчика в команду финтех-продукта. Требуется опыт с React и TypeScript от 5 лет...
+                            </div>
+                            <div class="vacancy-footer">
+                                <div class="vacancy-tags">
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">TypeScript</span>
+                                </div>
+                                <button class="btn-respond">Откликнуться</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card vacancy-card">
+                            <div class="vacancy-card-header">
+                                <div class="company-logo-small">🏢</div>
+                                <div class="vacancy-title-info">
+                                    <h3>UI/UX Designer</h3>
+                                    <p>Creative Studio • Удаленно • Сегодня</p>
+                                </div>
+                                <div class="vacancy-salary">от 150 000 ₽</div>
+                            </div>
+                            <div class="vacancy-description">
+                                Создание интерфейсов для мобильных приложений и веб-сервисов. Работа в Figma...
+                            </div>
+                            <div class="vacancy-footer">
+                                <div class="vacancy-tags">
+                                    <span class="skill-tag">Figma</span>
+                                    <span class="skill-tag">UI/UX</span>
+                                </div>
+                                <button class="btn-respond">Откликнуться</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card vacancy-card">
+                            <div class="vacancy-card-header">
+                                <div class="company-logo-small">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="m8 21v-12a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v12"/><path d="m10 3h4"/></svg>
+                                </div>
+                                <div class="vacancy-title-info">
+                                    <h3>Middle Python Developer</h3>
+                                    <p>DataFlow Systems • Новосибирск • Удаленно</p>
+                                </div>
+                                <div class="vacancy-salary">180 000 — 240 000 ₽</div>
+                            </div>
+                            <div class="vacancy-description">
+                                Проектирование микросервисов для аналитической платформы. Работа с большими данными и оптимизация запросов к высоконагруженным БД.
+                            </div>
+                            <div class="vacancy-footer">
+                                <div class="vacancy-tags">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Django</span>
+                                    <span class="skill-tag">Docker</span>
+                                </div>
+                                <button class="btn-respond">Откликнуться</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card vacancy-card">
+                            <div class="vacancy-card-header">
+                                <div class="company-logo-small">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                                </div>
+                                <div class="vacancy-title-info">
+                                    <h3>Lead Product Designer</h3>
+                                    <p>FinTech Hub • Санкт-Петербург • Гибрид</p>
+                                </div>
+                                <div class="vacancy-salary">от 300 000 ₽</div>
+                            </div>
+                            <div class="vacancy-description">
+                                Развитие дизайн-системы банковского приложения и управление командой. Проведение UX-исследований и глубокое прототипирование.
+                            </div>
+                            <div class="vacancy-footer">
+                                <div class="vacancy-tags">
+                                    <span class="skill-tag">Figma</span>
+                                    <span class="skill-tag">UX Research</span>
+                                    <span class="skill-tag">Management</span>
+                                </div>
+                                <button class="btn-respond">Откликнуться</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card vacancy-card">
+                            <div class="vacancy-card-header">
+                                <div class="company-logo-small">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M2 12h2"/><path d="m4.93 19.07 1.41-1.41"/><path d="M12 22v-2"/><path d="m19.07 19.07-1.41-1.41"/><path d="M22 12h-2"/><path d="m19.07 4.93-1.41 1.41"/><path d="M12 12v.01"/><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+                                </div>
+                                <div class="vacancy-title-info">
+                                    <h3>Junior+ QA Engineer</h3>
+                                    <p>GameSphere Studio • Лимасол • Релокация</p>
+                                </div>
+                                <div class="vacancy-salary">120 000 — 160 000 ₽</div>
+                            </div>
+                            <div class="vacancy-description">
+                                Тестирование игровых механик и клиент-серверного взаимодействия. Возможность быстрого перехода в автоматизацию на JavaScript.
+                            </div>
+                            <div class="vacancy-footer">
+                                <div class="vacancy-tags">
+                                    <span class="skill-tag">QA</span>
+                                    <span class="skill-tag">Postman</span>
+                                    <span class="skill-tag">JS</span>
+                                </div>
+                                <button class="btn-respond">Откликнуться</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card vacancy-card">
+                            <div class="vacancy-card-header">
+                                <div class="company-logo-small">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                </div>
+                                <div class="vacancy-title-info">
+                                    <h3>Project Manager (Marketing)</h3>
+                                    <p>MediaGrow Agency • Москва • Офис</p>
+                                </div>
+                                <div class="vacancy-salary">140 000 — 190 000 ₽</div>
+                            </div>
+                            <div class="vacancy-description">
+                                Координация команды продакшена, контроль дедлайнов и прямая коммуникация с крупными брендами. Ведение проектов под ключ.
+                            </div>
+                            <div class="vacancy-footer">
+                                <div class="vacancy-tags">
+                                    <span class="skill-tag">Agile</span>
+                                    <span class="skill-tag">Jira</span>
+                                    <span class="skill-tag">Planning</span>
+                                </div>
+                                <button class="btn-respond">Откликнуться</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
