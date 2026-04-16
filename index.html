@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFinder — Поиск работы и сотрудников</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <a href="#" class="title">Job<span>Finder</span></a>
+            </div>
+
+            <button class="header__burger_menu" id="burger-toggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="header__menu" id="nav-menu">
+                <ul class="header__menu-list">
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">Резюме</a></li>
+                    <li><a href="#">Для соискателей</a></li>
+                    <li><a href="#">Для работодателей</a></li>
+                </ul>
+                
+                <div class="header__actions">
+                    <button id="theme-toggle" class="header__theme-changer" title="Сменить тему">🌓</button>
+                    <a href="login.html" class="btn-link">Войти</a>
+                    <a href="#" class="btn btn-outline">Разместить резюме</a>
+                    <a href="#" class="btn btn-primary">Разместить вакансию</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <section class="hero">
+            <div class="container hero__container">
+                <h1 class="hero__title">Найдите работу своей мечты</h1>
+                <form class="search-form">
+                    <div class="search-form__group search-form__group--input">
+                        <input type="text" class="search-form__input" placeholder="Должность, компания или ключевые слова">
+                    </div>
+                    <div class="search-form__group search-form__group--select">
+                        <select class="search-form__select">
+                            <option value="">Выберите город</option>
+                            <option value="msc">Москва</option>
+                            <option value="spb">Санкт-Петербург</option>
+                            <option value="kzn">Казань</option>
+                            <option value="nov">Нижний Новгород</option>
+                            <option value="bel">Белебей</option>
+                            <option value="ufa">Уфа</option>
+                            <option value="kgd">Калининград</option>
+                            <option value="other">Другой</option>
+                        </select>
+                    </div>
+                    <div class="search-form__group search-form__group--btn">
+                        <button type="submit" class="btn btn-primary search-form__btn">Найти</button>
+                    </div>
+                </form>
+                <a href="#" class="hero__link" id="extended-search__link">Расширенный поиск</a>
+                <div class="extended-search__wrapper" id="extended-search">
+                    <h2>Расширенный поиск</h2>
+                    <div class="extended-search__filters">
+                        <div class="filter-group">
+                            <label for="experience">Опыт работы:</label>
+                            <select id="experience" class="search-form__select">
+                                <option value="">Любой</option>
+                                <option value="none">Без опыта</option>
+                                <option value="1-3">1-3 года</option>
+                                <option value="3-5">3-5 лет</option>
+                                <option value="5+">5 и более лет</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="employment">Тип занятости:</label>
+                            <select id="employment" class="search-form__select">
+                                <option value="">Любой</option>
+                                <option value="full-time">Полная занятость</option>
+                                <option value="part-time">Частичная занятость</option>
+                                <option value="freelance">Фриланс</option>
+                                <option value="internship">Стажировка</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="salary">Уровень зарплаты:</label>
+                            <select id="salary" class="search-form__select">
+                                <option value="">Любой</option>
+                                <option value="0-50">До 50 000 ₽</option>
+                                <option value="50-100">50 000 - 100 000 ₽</option>
+                                <option value="100-150">100 000 - 150 000 ₽</option>
+                                <option value="150+">150 000 ₽ и выше</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="remote">Удаленная работа:</label>
+                            <select id="remote" class="search-form__select">
+                                <option value="">Любая</option>
+                                <option value="remote-only">Только удаленная</option>
+                                <option value="office-only">Только офисная</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-set-button">
+                            <button type="submit" class="btn btn-primary search-form__btn" id="submit_filters">Применить фильтры</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories">
+            <div class="container categories__container">
+                <h2 class="section-title">Популярные категории</h2>
+                <div class="categories__grid">
+                    <div class="category-card">
+                        <div class="category-card__icon"><img src="images/it.svg" alt=""></div>
+                        <h3 class="category-card__title">IT, программирование, разработка</h3>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-card__icon"><img src="images/marketing.svg" alt=""></div>
+                        <h3 class="category-card__title">Маркетинг, реклама, PR</h3>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-card__icon"><img src="images/finance.svg" alt=""></div>
+                        <h3 class="category-card__title">Финансы, банковское дело</h3>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-card__icon"><img src="images/sales.svg" alt=""></div>
+                        <h3 class="category-card__title">Продажи</h3>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-card__icon"><img src="images/education.svg" alt=""></div>
+                        <h3 class="category-card__title">Образование, наука</h3>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-card__icon"><img src="images/medicine.svg" alt=""></div>
+                        <h3 class="category-card__title">Медицина, фармацевтика</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="premium-vacancies">
+            <div class="container">
+                <h2 class="section-title">Премиум-вакансии</h2>
+            
+                <div class="slider">
+                    <div class="slider__container">
+                        <div class="vacancy-card slider__slide">
+                            <div class="vacancy-card__header">
+                                <img src="images/premium/pr1.png" alt="Logo" class="vacancy-card__logo">
+                                <div class="vacancy-card__meta">
+                                    <h3 class="vacancy-card__title">Архитектор квантовых вычислений</h3>
+                                    <p class="vacancy-card__company">Nebula Quantum Systems</p>
+                                </div>
+                            </div>
+                            <p class="vacancy-card__salary">от 850 000 ₽</p>
+                            <a href="#" class="btn btn-outline vacancy-card__btn">Подробнее</a>
+                        </div>
+
+                        <div class="vacancy-card slider__slide">
+                            <div class="vacancy-card__header">
+                                <img src="images/premium/pr2.png" alt="Logo" class="vacancy-card__logo">
+                                <div class="vacancy-card__meta">
+                                    <h3 class="vacancy-card__title">Директор по этике и развитию искусственного интеллекта</h3>
+                                    <p class="vacancy-card__company">Aether Mind Corp.</p>
+                                </div>
+                            </div>
+                            <p class="vacancy-card__salary">от 1 200 000 ₽</p>
+                            <a href="#" class="btn btn-outline vacancy-card__btn">Подробнее</a>
+                        </div>
+                        
+                        <div class="vacancy-card slider__slide">
+                            <div class="vacancy-card__header">
+                                <img src="images/premium/pr3.png" alt="Logo" class="vacancy-card__logo">
+                                <div class="vacancy-card__meta">
+                                    <h3 class="vacancy-card__title">Вице-президент по кибербезопасности</h3>
+                                    <p class="vacancy-card__company">IronClad Fintech Global</p>
+                                </div>
+                            </div>
+                            <p class="vacancy-card__salary">от 1 500 000 ₽</p>
+                            <a href="#" class="btn btn-outline vacancy-card__btn">Подробнее</a>
+                        </div>
+
+                        <div class="vacancy-card slider__slide">
+                            <div class="vacancy-card__header">
+                                <img src="images/premium/pr3.png" alt="Logo" class="vacancy-card__logo">
+                                <div class="vacancy-card__meta">
+                                    <h3 class="vacancy-card__title">Ведущий специалист по экспертизе блокчейна</h3>
+                                    <p class="vacancy-card__company">IronClad Fintech Global</p>
+                                </div>
+                            </div>
+                            <p class="vacancy-card__salary">от 950 000 ₽</p>
+                            <a href="#" class="btn btn-outline vacancy-card__btn">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="slider__nav">
+                        <button class="slider__arrow slider__arrow--prev" aria-label="Назад">←</button>
+                        <div class="slider__dots">
+                            <span class="slider__dot slider__dot--active"></span>
+                            <span class="slider__dot"></span>
+                            <span class="slider__dot"></span>
+                            <span class="slider__dot"></span>
+                        </div>
+                        <button class="slider__arrow slider__arrow--next" aria-label="Вперед">→</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Почему выбирают JobFinder</h2>
+                <div class="features__grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Тысячи вакансий</h3>
+                        <p class="feature-card__text">Ежедневное обновление предложений от ведущих мировых компаний и стартапов.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Прямые работодатели</h3>
+                        <p class="feature-card__text">Общайтесь напрямую с HR-менеджерами без посредников и лишних этапов.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Конфиденциальность</h3>
+                        <p class="feature-card__text">Ваши данные защищены современными протоколами шифрования и полной анонимностью.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Удобное приложение</h3>
+                        <p class="feature-card__text">Откликайтесь на вакансии и проходите интервью прямо со своего смартфона.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews">
+            <div class="container">
+                <h2 class="section-title">Что говорят пользователи</h2>
+                <div class="reviews__grid">
+                    <div class="review-card">
+                        <div class="review-card__user">
+                            <div class="review-card__avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">АП</div>
+                            <div class="review-card__info">
+                                <h4 class="review-card__name">Александр Петров</h4>
+                                <p class="review-card__pos">Frontend Developer</p>
+                            </div>
+                        </div>
+                        <p class="review-card__text">«Нашёл работу мечты за 2 недели! Очень удобный поиск и фильтры по технологиям. Тёмная тема — отдельный кайф для глаз.»</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-card__user">
+                            <div class="review-card__avatar" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4);">МК</div>
+                            <div class="review-card__info">
+                                <h4 class="review-card__name">Марина Козлова</h4>
+                                <p class="review-card__pos">Product Designer</p>
+                            </div>
+                        </div>
+                        <p class="review-card__text">«JobFinder — это лучший опыт поиска работы. Всё интуитивно понятно, никаких лишних полей и сложных регистраций. Рекомендую!»</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-card__user">
+                            <div class="review-card__avatar" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">ДИ</div>
+                            <div class="review-card__info">
+                                <h4 class="review-card__name">Дмитрий Иванов</h4>
+                                <p class="review-card__pos">Backend Engineer</p>
+                            </div>
+                        </div>
+                        <p class="review-card__text">«Понравилась возможность общаться с работодателем напрямую. Откликнулся, прошёл интервью в приложении и получил оффер.»</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__info">
+                    <div class="header__logo">
+                        <a href="#" class="title">Job<span>Finder</span></a>
+                    </div>
+                    <p class="footer__description">Инновационная платформа для поиска работы в сфере высоких технологий.</p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Навигация</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Работодателям</a></li>
+                        <li><a href="#">О проекте</a></li>
+                        <li><a href="#">Помощь</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__social">
+                    <h4 class="footer__title">Мы в соцсетях</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link telegram">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.944 0C5.346 0 0 5.346 0 11.944c0 6.598 5.346 11.944 11.944 11.944 6.598 0 11.944-5.346 11.944-11.944C23.888 5.346 18.542 0 11.944 0zm5.806 8.336l-1.95 9.197c-.147.652-.533.813-1.08.504l-2.97-2.188-1.432 1.378c-.158.158-.291.291-.597.291l.213-3.022 5.502-4.969c.239-.213-.052-.332-.37-.12l-6.799 4.282-2.928-.916c-.636-.2-1.272-.213-.648-.6l11.413-4.4c.528-.191 1.056.12 1.056.842v.021z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link vk">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.45 5.948c.166-.546 0-.948-.783-.948h-2.594c-.658 0-.962.347-1.127.73 0 0-1.32 3.207-3.188 5.286-.603.603-.873.796-1.203.796-.165 0-.413-.193-.413-.747v-5.118c0-.658-.192-.948-.74-.948h-4.076c-.412 0-.66.306-.66.596 0 .624.932.768 1.028 2.527v3.818c0 .837-.152.99-.482.99-.873 0-3.001-3.223-4.257-6.91-.25-.72-.501-1.01-1.163-1.01H1.545c-.742 0-.89.347-.89.73 0 .686.878 4.09 4.1 8.598 2.146 3.078 5.17 4.75 7.918 4.75 1.65 0 1.853-.37 1.853-1.01v-2.324c0-.742.157-.89.654-.89.363 0 1.006.182 2.476 1.6 1.683 1.683 1.96 2.448 2.91 2.448h2.593c.742 0 1.112-.37.898-1.1-.235-.727-1.07-1.782-2.181-3.045-.603-.714-1.507-1.485-1.783-1.876-.384-.504-.274-.72 0-1.163 0 0 3.142-4.42 3.467-5.917z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link facebook">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link twitter">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>© 2026 JobFinder</p>
+                <p class="footer__disclaimer">Некоторый контент (иконки, названия и описания компаний, филлерные текста итд) был сгенерирован через ИИ</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
