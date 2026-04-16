@@ -81,3 +81,20 @@ function handleLoginClick() {
     const form = document.querySelector('.login-form');
     form.classList.add('submitted');
 }
+
+
+
+const btn = document.getElementById('btn-expand');
+const content = document.getElementById('desc-container');
+
+if (btn && content) {
+    btn.onclick = function() {
+        content.classList.toggle('expanded');
+        
+        if (content.classList.contains('expanded')) {
+            btn.innerText = 'Свернуть';
+        } else {
+            btn.innerText = 'Развернуть';
+        }
+    };
+}
