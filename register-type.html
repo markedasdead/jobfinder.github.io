@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFinder — Поиск работы и сотрудников</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <a href="#" class="title">Job<span>Finder</span></a>
+            </div>
+
+            <button class="header__burger_menu" id="burger-toggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="header__menu" id="nav-menu">
+                <ul class="header__menu-list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">Резюме</a></li>
+                    <li><a href="#">Для соискателей</a></li>
+                    <li><a href="#">Для работодателей</a></li>
+                </ul>
+                
+                <div class="header__actions">
+                    <button id="theme-toggle" class="header__theme-changer" title="Сменить тему">🌓</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="register-type">
+        <div class="type-container">
+            <div class="type-header">
+                <h1>Как вы планируете использовать JobFinder?</h1>
+                <p>Выберите тип аккаунта, чтобы продолжить регистрацию</p>
+            </div>
+
+            <div class="type-grid">
+                <a href="register-candidate.html" class="type-card">
+                    <div class="type-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                            <line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/>
+                        </svg>
+                    </div>
+                    <div class="type-info">
+                        <h2>Я ищу работу</h2>
+                        <p>Разместите резюме и находите лучшие предложения от топовых компаний</p>
+                    </div>
+                    <div class="type-arrow">→</div>
+                </a>
+
+                <a href="register-employer.html" class="type-card">
+                    <div class="type-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <div class="type-info">
+                        <h2>Я ищу сотрудников</h2>
+                        <p>Публикуйте вакансии и находите идеальных кандидатов для вашей команды</p>
+                    </div>
+                    <div class="type-arrow">→</div>
+                </a>
+            </div>
+
+            <p class="type-footer">
+                Уже есть аккаунт? <a href="login.html">Войти</a>
+            </p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
