@@ -75,3 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', () => updateSlider(currentIndex));
 });
+
+
+function handleLoginClick() {
+    const form = document.querySelector('.login-form');
+    form.classList.add('submitted');
+}
